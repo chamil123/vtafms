@@ -1,0 +1,294 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<!-- Left side column. contains the logo and sidebar -->
+
+<%
+    Object user_id = "";
+    Object nameofuser = "";
+    Object imageofuser = "";
+    if ((session.getAttribute("username") == null) || (session.getAttribute("username") == "")) {
+
+        response.sendRedirect("../login.jsp");
+    }
+    user_id = session.getAttribute("user_id");
+    imageofuser = session.getAttribute("user_image");
+    //Object username = session.getAttribute("username");
+    nameofuser = session.getAttribute("name");
+
+    //System.out.println("name jspgff f : "+username);
+    System.out.println("session eke value eka : " + imageofuser.toString());
+%>
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+
+
+
+        <div class="user-panel">
+            <div class="pull-left image">
+                <img src="../../uploads/<%=imageofuser%>" class="img-circle" alt="User Image">
+            </div>
+            <div class="pull-left info">
+                <p style="font-weight: normal;color: #cccccc"> <small><%=nameofuser%> </small></p>
+
+            </div>
+        </div>
+
+
+
+        <!-- /.search form -->
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu">
+            <li class="header">MAIN NAVIGATION</li>
+                <%                    if (user_id.equals(1)) {
+
+                %>
+            <li class="treeview">
+                <a href="../Dashboard/Dashboard.jsp ">
+                    <i class="glyphicon glyphicon-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <!--  <ul class="treeview-menu">
+                      <li><a href="index2.jsp"><i class="fa fa-circle-o"></i>   Add user </a></li>
+                      <li class="active"><a href="viewUser.jsp"><i class="fa fa-circle-o"></i> View User</a></li>
+                  </ul>-->
+            </li>
+            <li class="active treeview">
+                <a href="#">
+                    <i class="glyphicon glyphicon-user"></i> <span>User Management</span> <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="../User/User.jsp"><i class="fa fa-circle-o"></i>   Add user </a></li>
+                    <li class="active"><a href="../User/viewUser.jsp"><i class="fa fa-circle-o"></i> View User</a></li>
+                </ul>
+            </li>
+
+
+            <li class="treeview">
+                <a href="../Center/center.jsp">
+                    <i class="glyphicon glyphicon-credit-card"></i>
+                    <span>Center Management</span>
+                    <span class="label label-primary pull-right"></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="../Center/center.jsp"><i class="fa fa-circle-o"></i> Add center</a></li>
+                    <li><a href="../Center/viewCenters.jsp"><i class="fa fa-circle-o"></i> View centers</a></li>
+
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="glyphicon glyphicon-bookmark"></i>
+                    <span>Excess Management</span>
+                    <span class="label label-primary pull-right"></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="../Excess/Excess.jsp"><i class="fa fa-circle-o"></i> Add excess</a></li>
+                    <li><a href="../Excess/viewExcess.jsp"><i class="fa fa-circle-o"></i> View excess</a></li>
+
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="glyphicon glyphicon-book"></i>
+                    <span>Expenses Management</span>
+                    <span class="label label-primary pull-right"></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="../Expenses/AddExpenses.jsp"><i class="fa fa-circle-o"></i> Add expenses</a></li>
+                    <li><a href="../Expenses/viewExpenses.jsp"><i class="fa fa-circle-o"></i> View centers</a></li>
+
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="glyphicon glyphicon-time"></i>
+                    <span>Loan Management</span>
+                    <span class="label label-primary pull-right"></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="../Loan/Loan.jsp"><i class="fa fa-circle-o"></i> Add loan</a></li>
+                    <li><a href="../Loan/viewLoan.jsp"><i class="fa fa-circle-o"></i> View loan</a></li>
+
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="glyphicon glyphicon-briefcase"></i>
+                    <span>Timebag Management</span>
+                    <span class="label label-primary pull-right"></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="../TimeBag/CollectTimeBag.jsp"><i class="fa fa-circle-o"></i>Open timebag</a></li>
+
+                    <li><a href="../TimeBag/viewCollectTimeBags.jsp"><i class="fa fa-circle-o"></i> View timbages</a></li>
+
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="glyphicon glyphicon-cog"></i>
+                    <span >Summery Management</span> 
+                    <span class="label label-primary pull-right"></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="../Summery/Summery.jsp"><i class="fa fa-circle-o"></i>Create summery</a></li>
+                    <!--  <li><a href="../Summery/UpdateSummery.jsp"><i class="fa fa-circle-o"></i>Create summery</a></li>-->
+                    <li><a href="../Summery/viewSummery.jsp"><i class="fa fa-circle-o"></i> View summery</a></li>
+                    <li><a href="../Summery/GeneralSummery.jsp"><i class="fa fa-circle-o"></i> General summery</a></li>
+                    <!-- <li><a href="../Summery/UbdateSummeryBody.jsp"><i class="fa fa-circle-o"></i> General summery</a></li>-->
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="glyphicon glyphicon-usd"></i>
+                    <span >Cash Management</span>
+                    <span class="label label-primary pull-right"></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="../Cash/viewCenterCash.jsp"><i class="fa fa-circle-o"></i>Center cash</a></li>
+                    <li><a href="../Cash/GeneralCashDetails.jsp"><i class="fa fa-circle-o"></i>General cash</a></li>
+
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="glyphicon glyphicon-tags"></i>
+                    <span >Runners Management</span>
+                    <span class="label label-primary pull-right"></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="../Runner/Runner.jsp"><i class="fa fa-circle-o"></i>Add runner</a></li>
+
+                    <li><a href="../Runner/ViewRunners.jsp"><i class="fa fa-circle-o"></i> View summery</a></li>
+                     <li><a href="../Runner/RaeByRunner.jsp"><i class="fa fa-circle-o"></i> RaeByRunner</a></li>
+                 
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="glyphicon glyphicon-folder-open"></i>
+                    <span >Account Management</span>
+                    <span class="label label-primary pull-right"></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="../Account/Account.jsp"><i class="fa fa-circle-o"></i>Add runner</a></li>
+                    <li><a href="../Account/viewAccounts.jsp"><i class="fa fa-circle-o"></i> View summery</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="glyphicon glyphicon-signal"></i>
+                    <span >Reports</span> <label class="badge info" style="height: 17px;background-color: #009999">04</label>
+                    <span class="label label-primary pull-right"></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="../Reports/Snapshot.jsp"><i class="fa fa-circle-o"></i>Company snapshot</a></li>
+                    <li><a href="../Reports/profitAndLoss.jsp"><i class="fa fa-circle-o"></i>Profit and loss</a></li>
+                    <li><a href="../Reports/CenterReport.jsp"><i class="fa fa-circle-o"></i>Center repoert</a></li>
+                    <li><a href="../Reports/AgentReport.jsp"><i class="fa fa-circle-o"></i>Agent repoert</a></li>
+
+                </ul>
+            </li>
+
+            <% } else if (user_id.equals(5)) { %>
+            <li class="treeview">
+                <a href="../Dashboard/DashboardUser.jsp ">
+                    <i class="glyphicon glyphicon-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <!--  <ul class="treeview-menu">
+                      <li><a href="index2.jsp"><i class="fa fa-circle-o"></i>   Add user </a></li>
+                      <li class="active"><a href="viewUser.jsp"><i class="fa fa-circle-o"></i> View User</a></li>
+                  </ul>-->
+            </li>
+
+            <li class="treeview">
+                <a href="../Center/center.jsp">
+                    <i class="glyphicon glyphicon-credit-card"></i>
+                    <span>Center Management</span>
+                    <span class="label label-primary pull-right"></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="../Center/center.jsp"><i class="fa fa-circle-o"></i> Add center</a></li>
+                    <li><a href="../Center/viewCenters.jsp"><i class="fa fa-circle-o"></i> View centers</a></li>
+
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="glyphicon glyphicon-bookmark"></i>
+                    <span>Excess Management</span>
+                    <span class="label label-primary pull-right"></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="../Excess/Excess.jsp"><i class="fa fa-circle-o"></i> Add excess</a></li>
+                    <li><a href="../Excess/viewExcess.jsp"><i class="fa fa-circle-o"></i> View excess</a></li>
+
+                </ul>
+            </li>
+
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="glyphicon glyphicon-briefcase"></i>
+                    <span>Timebag Management</span>
+                    <span class="label label-primary pull-right"></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="../TimeBag/CollectTimeBag.jsp"><i class="fa fa-circle-o"></i>Open timebag</a></li>
+
+                    <li><a href="../TimeBag/viewCollectTimeBags.jsp"><i class="fa fa-circle-o"></i> View timbages</a></li>
+                   
+
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="glyphicon glyphicon-cog"></i>
+                    <span >Summery Management</span> 
+                    <span class="label label-primary pull-right"></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="../Summery/Summery.jsp"><i class="fa fa-circle-o"></i>Create summery</a></li>
+                    <!--  <li><a href="../Summery/UpdateSummery.jsp"><i class="fa fa-circle-o"></i>Create summery</a></li>-->
+                    <li><a href="../Summery/viewSummery.jsp"><i class="fa fa-circle-o"></i> View summery</a></li>
+                    <li><a href="../Summery/GeneralSummery.jsp"><i class="fa fa-circle-o"></i> General summery</a></li>
+                    <!-- <li><a href="../Summery/UbdateSummeryBody.jsp"><i class="fa fa-circle-o"></i> General summery</a></li>-->
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="glyphicon glyphicon-usd"></i>
+                    <span >Cash Management</span>
+                    <span class="label label-primary pull-right"></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="../Cash/viewCenterCash.jsp"><i class="fa fa-circle-o"></i>Center cash</a></li>
+                    <!-- <li><a href="ViewSummery.jsp"><i class="fa fa-circle-o"></i> View summery</a></li>-->
+
+                </ul>
+            </li>
+
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="glyphicon glyphicon-signal"></i>
+                    <span >Reports</span> <label class="badge info" style="height: 17px;background-color: #009999">04</label>
+                    <span class="label label-primary pull-right"></span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="../Reports/Snapshot.jsp"><i class="fa fa-circle-o"></i>Company snapshot</a></li>
+                    <li><a href="../Reports/profitAndLoss.jsp"><i class="fa fa-circle-o"></i>Profit and loss</a></li>
+                    <li><a href="../Reports/CenterReport.jsp"><i class="fa fa-circle-o"></i>Center repoert</a></li>
+                    <li><a href="../Reports/AgentReport.jsp"><i class="fa fa-circle-o"></i>Agent repoert</a></li>
+
+                </ul>
+            </li>
+            <% }%>
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>
+

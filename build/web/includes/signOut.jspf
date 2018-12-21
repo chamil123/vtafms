@@ -1,0 +1,89 @@
+<%@page import="BIT.Project.VTAFMS.Model.Notification"%>
+<%@page import="java.util.List"%>
+<%@page import="BIT.Project.VTAFMS.Controller.NotificationController"%>
+<%
+    Object username = "";
+    Object user_role = "";
+    Object user_image = "";
+    String names = "";
+    if ((session.getAttribute("username") == null) || (session.getAttribute("username") == "")) {
+
+        response.sendRedirect("../../login.jsp");
+
+    } else {
+        username = session.getAttribute("username");
+        user_role = session.getAttribute("user_role");
+        user_image = session.getAttribute("user_image");
+        names = session.getAttribute("name").toString();
+
+    }
+
+    List<Notification> notifyList = (List<Notification>) NotificationController.getAllNotification();
+    int notification=NotificationController.getAlluncheckNotificationCount();
+%>
+<div class="navbar-custom-menu" style="height: 20px">
+    <ul class="nav navbar-nav">
+        <!-- User Account: style can be found in dropdown.less -->
+        <ul class="nav navbar-nav" >
+            <!-- Notifications: style can be found in dropdown.less -->
+            <li class="dropdown notifications-menu" >
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height: 50px">
+                    <i class="fa fa-bell-o"></i>
+                    <span class="label label-warning" ><%=notification %></span>
+
+                    <i class="glyphicon glyphicon-globe" style="color: #999999; font-size: 20px"></i>
+                </a>
+                <ul class="dropdown-menu" style="width: 265px">
+                    <li class="header">You have <%=notification %> notifications</li>
+                    <li>
+                        <!-- inner menu: contains the actual data -->
+                        <ul class="menu">
+                            <%
+                                for (Notification model : notifyList) {
+                                    if (model.getNotification_status().equals("Active")) {
+                            %>
+                            <li >
+                                <a href="../../View/Summery/viewNotification.jsp" >
+                                    <i class="fa fa-users text-aqua"></i> <%=model.getNotification_Own() + " " + model.getNotificationDescription()%>
+                                </a>
+                            </li>
+                            <%}
+                                }%>
+                        </ul>
+                    </li>
+                    <li class="footer"><a href="../../View/Summery/viewNotification.jsp">View all</a></li>
+                </ul>
+            </li>
+        </ul>
+        <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+
+                <img src="../../uploads/<%=user_image%>" class="user-image" alt="User Image">
+                <span class="hidden-xs" style="color: #999999"><%=names%></span>
+            </a>
+            <ul class="dropdown-menu">
+                <!-- User image -->
+                <li class="user-header">
+                    <img src="../../uploads/<%=user_image%>" class="img-circle" alt="User Image">
+
+                    <p>
+                        <%=username%>
+                        <small><%=user_role.toString()%></small>
+                    </p>
+                </li>
+                <!-- Menu Footer-->
+                <li class="user-footer">
+                    <div class="pull-left">
+                        <a href="../../View/User/UserProfile.jsp" class="btn btn-info btn-flat">Profile</a>
+                    </div>
+                    <div class="pull-right">
+                        <a href="../../logout" class="btn btn-primary btn-flat">Sign out</a>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+        </li>
+    </ul>
+</div>

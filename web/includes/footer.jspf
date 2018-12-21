@@ -1,0 +1,9 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<footer class="main-footer">
+    <div class="pull-right hidden-xs">
+        <b>Version</b> 1.01
+    </div>
+    <strong>Copyright &copy; 2016 <a href="">Chamil pathirana</a>.</strong> All rights
+    reserved.
+</footer> 
